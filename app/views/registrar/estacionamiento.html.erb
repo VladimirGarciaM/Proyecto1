@@ -55,8 +55,8 @@
                  <div class="card mb-3 card-publicidad container-publicidad" >
                     <div class="col-md-9 mb-4 mt-4">
                        <br>
-                       <form class="needs-validation form-horizontal " novalidate>
-                          <div class="row">
+                    <%= form_for :producto, :url => {:controller => "registro", :action => "estacionamiento_post"}, :method => :post, :html => { :class => "form-horizontal" , :id => "form_estacionamiento"}  do |f| %>
+                            <div class="row">
                              <div class="col-md-9  col-sm-12">
                                  <div class="form-group">
                                       <div class="row">
@@ -64,7 +64,7 @@
                                         <div class="form-group">
                                           <label class="control-label col-sm-2" for="Nombre">Nombre:</label>
                                           <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="Nombre" placeholder="Nombre de estacionamiento" name="Nombre">
+                                            <input type="text" class="form-control" id="Nombre" placeholder="Nombre de estacionamiento" name="nombre">
                                             <div class="invalid-feedback">
                                               Valid first name is required.
                                             </div>
@@ -148,36 +148,40 @@
                                                               </div>
                                                               </div>
                                                               </div>
-                                                              <div class="form-group">
+                                                        <div class="form-group">
+                                                                  <label class="control-label col-sm-2" for="Cargue">Cargue:</label>
                                                                   <div class="col-sm-8">
-                                                                  <input type="file" class="form-control-file border" name="file">
-
+                                                                  <input type="file" class="form-control-file border">
+                                                                    <div class="invalid-feedback">
+                                                                      Valid first name is required.
+                                                                    </div>
                                                                     </div>
                                                                     </div>
 
                                                               <h3>My Google Maps Demo</h3>
-   <!--The div element for the map -->
-   <div id="map"></div>
-   <script>
-// Initialize and add the map
-function initMap() {
- // The location of Uluru
- var uluru = {lat: -25.344, lng: 131.036};
- // The map, centered at Uluru
- var map = new google.maps.Map(
-     document.getElementById('map'), {zoom: 4, center: uluru});
- // The marker, positioned at Uluru
- var marker = new google.maps.Marker({position: uluru, map: map});
-}
-   </script>
-   <!--Load the API from the specified URL
-   * The async attribute allows the browser to render the page while the API loads
-   * The key parameter will contain your own API key (which is not needed for this tutorial)
-   * The callback parameter executes the initMap() function
-   -->
-   <script async defer
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv_pMTtA9XuSLAG7RaDVFEYmOn_FkDRpo&callback=initMap">
-   </script>
+                                                            <!--The div element for the map -->
+
+                                                                  <div id="map"></div>
+                                                                  <script>
+                                                                    // Initialize and add the map
+                                                                    function initMap() {
+                                                                      // The location of Uluru
+                                                                      var uluru = {lat: -25.344, lng: 131.036};
+                                                                      // The map, centered at Uluru
+                                                                      var map = new google.maps.Map(
+                                                                      document.getElementById('map'), {zoom: 4, center: uluru});
+                                                                      // The marker, positioned at Uluru
+                                                                      var marker = new google.maps.Marker({position: uluru, map: map});
+                                                                      }
+                                                                      </script>
+                                                                      <!--Load the API from the specified URL
+                                                                      * The async attribute allows the browser to render the page while the API loads
+                                                                      * The key parameter will contain your own API key (which is not needed for this tutorial)
+                                                                      * The callback parameter executes the initMap() function
+                                                                    -->
+                                                                    <script async defer
+                                                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv_pMTtA9XuSLAG7RaDVFEYmOn_FkDRpo&callback=initMap">
+                                                                    </script>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -188,10 +192,24 @@ function initMap() {
                                           <div class=" card-footer">
                                            <div class="float-right">
                                             <input class="btn btn-secondary btn-lg " type="reset" value="Cancelar">
-                                             <input class="btn btn-primary btn-lg " type="button" value="Guardar Cambios">
+                                             <input class="btn btn-primary btn-lg " type="submit" value="Guardar Cambios">
                                             </div>
                                                 </div>
+                                              <% end %>
 
+                                               <% if @nombre %>
+
+                                               <h4>
+
+                                                 El nombre del producto es: <%=@nombre%> <br/>
+
+
+
+                                               </h4>
+
+                                              <% else %>
+
+                                               <% end %>
 
                            </body>
                            </html>

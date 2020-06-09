@@ -1,5 +1,4 @@
-<!DOCTYPE html lang="en">
-
+<!DOCTYPE html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,8 +40,6 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="album.css" rel="stylesheet">
-
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
       <a class="navbar-brand" href="#">SISTEMA ESTACIONAMIENTOS</a>
@@ -74,10 +71,6 @@
 
       </div>
 
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">INICIAR SESION</button>
-
-
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">REGISTRATE</button>
 </nav>
 
 </head>
@@ -92,27 +85,65 @@
   </div>
 </div>
 
-<input type="text"  class="col-sm-3" class="form-control" placeholder= "Ingresa el nombre de tu estacionamiento" name="txt_nombre_estacionamiento">
+<form method="post" action="alquileres_post">
+<input type="text"  class="col-sm-3"  required= ""  pattern= "^[a-zA-Z*\s]{0,20}" class="form-control" placeholder= "Ingresa el nombre de tu estacionamiento" id="txt_nombre_estacionamiento">
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-Fecha de inicio: <input type="date" id="fecha_inicio" name="fecha_inicio">
-&nbsp;&nbsp;&nbsp;&nbsp;
-Fecha de fin: <input type="date" id="fecha_inicio" name="fecha_inicio">
-&nbsp;&nbsp;&nbsp;&nbsp;
 
-<input type="submit" value="Buscar"/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-<br><br>
+Rango de Fechas:
+<input type="text" id="rangepickerStart">
+<input type="text" id="rangepickerEnd">
+<input type="submit" value="Buscar">
+
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+</form>
+
+<%= form_for :productos, :url => {:controller => "registro", :action => "alquileres_post"}, :method => :post, :html => { :class => "form-horizontal" , :id => "form_producto"}  do |f| %>
+<%= hidden_field_tag :start %>
+<%= hidden_field_tag :end %>
+<% end %>
+<%= @resultado %>
+<script>
+	$("#rangepickerStart").daterangepicker({
+		 singleDatePicker: true,
+    	 showDropdowns: true,
+         minYear: 2010,
+   		 maxYear: parseInt(moment().format('YYYY'),10)
+	}, function(start, end, label) {
+ 	$("#start").val(start.format('YYYY-MM-DD'));
+ 	$("form").submit( );
+	});
+
+	$("#rangepickerEnd").daterangepicker({
+		 singleDatePicker: true,
+    	 showDropdowns: true,
+         minYear: 2010,
+   		 maxYear: parseInt(moment().format('YYYY'),10)
+	}, function(start, end, label) {
+ 	$("#end").val(end.format('YYYY-MM-DD'));
+ 	$("form").submit( );
+	});
+
+
+</script>
 
 </header>
 
-<main>
+<p></p>
 
+
+<main>
 
 <div class="container light" >
 <div class="row" style="border: solid 1px #ccc;">
@@ -129,13 +160,13 @@ Fecha de fin: <input type="date" id="fecha_inicio" name="fecha_inicio">
   </div>
 
   <div class="col-3">
-   <label for="">Precio X Hora: S/.30.00</label><br>
+   <label for="">Nombre: A</label><br>
    <label for="">Total: S/ 60.00</label>
   </div>
 
   <div class="col-3" align="center">
    <label for="">Servicios adicionales: </label><br>
-   <label for="">Fechas y horas: </label><br>
+   <label for="">Fecha: </label> 2020-01-01 <br>
   </div>
 
 </div>
@@ -152,13 +183,13 @@ Fecha de fin: <input type="date" id="fecha_inicio" name="fecha_inicio">
 </div>
 
 <div class="col-3">
-  <label for="">Precio X Hora: S/ 40.00</label><br>
+  <label for="">Nombre: B</label><br>
   <label for="">Total: S/ 80.00</label>
 </div>
 
 <div class="col-3"  align="center">
   <label for="">Servicios adicionales: </label><br>
-   <label for="">Fechas y horas: </label><br>
+   <label for="">Fecha: </label> 2020-03-06 <br>
 </div>
 
 </div>
@@ -175,13 +206,13 @@ Fecha de fin: <input type="date" id="fecha_inicio" name="fecha_inicio">
 </div>
 
 <div class="col-3">
- <label for="">Precio X Hora: S/ 50.00</label><br>
+ <label for="">Nombre: C</label><br>
   <label for="">Total: S/ 120.00</label>
 </div>
 
 <div class="col-3"  align="center">
   <label for="">Servicios adicionales: </label><br>
-  <label for="">Fechas y horas: </label><br>
+  <label for="">Fecha: </label>  2020-08-06 <br>
 
 </div>
 
@@ -194,8 +225,6 @@ Fecha de fin: <input type="date" id="fecha_inicio" name="fecha_inicio">
 
 </div>
 </div>
-
-
 
 
 <br><br>

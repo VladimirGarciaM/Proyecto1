@@ -13,16 +13,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-
-
       <style>
-
-
       .espacio {
           margin-right: 5%;
       }
-
         .bd-placeholder-img {
           font-size: 1.125rem;
           text-anchor: middle;
@@ -51,52 +45,41 @@
       </style>
       <!-- Custom styles for this template -->
       <link href="album.css" rel="stylesheet">
+    </head>
+      <body>
+        <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+            <img class="img-logo" src="<%= image_path('logo.png') %>"  alt="Logo de PostresFacilito" >
+          <a class="navbar-brand title" href="#">ARKING</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+              </li>
+              <li class="nav-item">
+              <a class="btn btn-outline-light my-2 my-sm-0" type="submit" href="#">PERFIL</a>
+              </li>
+              <li class="nav-item active">
+              <a class="btn btn-outline-light my-2 my-sm-0" type="submit"href="estacionamientos">ESTACIONAMIENTOS</a>
+              </li>
+              <li class="nav-item ">
+              <a class="btn btn-outline-light my-2 my-sm-0" type="submit"href="servicios">SERVICIOS</a>
+              </li>
+              <li class="nav-item">
+              <a class="btn btn-outline-light my-2 my-sm-0" type="submit"href="alquileres">ALQUILERES</a>
+              </li>
+              <li class="nav-item">
+              <a class="btn btn-outline-light my-2 my-sm-0" type="submit"href="inicio">SALIR</a>
+              </li>
+            </ul>
+          </div>
+              <button class="btn btn-outline-light my-2 my-sm-0" type="submit">LOG OUT</button>
+              <button class="btn btn-outline-light my-2 my-sm-0" type="submit">ESTADO</button>
+      </nav>
 
-  </head>
-
- <body style="background-color:white;">
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-      <a class="navbar-brand" href="#">SISTEMA ESTACIONAMIENTOS</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-<!-- Luego colocar imagen logo
-
-             <div class="form-group row">
-                 <img src="/images/logo.png" class="img-logo"  alt="Logo de PostresFacilito" >
-                <a class="navbar-brand title" href="#">ARKING</a>
-            </div>
--->
-      <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-          </li>
-          <li class="nav-item">
-          <a class="btn btn-outline-light my-2 my-sm-0" href="#" type="submit">PERFIL</a>
-          </li>
-          <li class="nav-item">
-          <a class="btn btn-outline-light my-2 my-sm-0" href="estacionamientos" type="submit">ESTACIONAMIENTOS</a>
-          </li>
-          <li class="nav-item">
-          <a class="btn btn-outline-light my-2 my-sm-0" href="#" type="submit">SERVICIOS</a>
-          </li>
-          <li class="nav-item">
-          <a class="btn btn-outline-light my-2 my-sm-0" href="alquileres" type="submit">ALQUILERES</a>
-          </li>
-          <li class="nav-item">
-          <button class="btn btn-outline-light my-2 my-sm-0" href="#"type="submit">SALIR</button>
-          </li>
-        </ul>
-
-      </div>
-
-      <a class="navbar-brand" href="#">SISTEMA ESTACIONAMIENTOS</a>
-  </nav>
-
-
-
-</header>
+      </header>
 
 
 
@@ -120,148 +103,163 @@
 
 
 
+<%= form_for :upc, :html => { :method => :post, :class => "needs-validation", :novalidate => "novalidate", :id => "form_producto" }, :url => { :controller => "registro", :action => "estacionamiento_post" } do |f| %>
 
             <div class="container-fluid container-publicidad">
                <!-- Breadcrumbs-->
                  <div class="card mb-3 card-publicidad container-publicidad" >
                   <div class="container">
                      <br>
-                     <form class="needs-validation" novalidate>
+                   <form class="needs-validation" novalidate>
                         <div class="row">
                            <div class="col-md-7 col-sm-12">
 
 
-
-
-                              <div class="form-group row">
-                                 <label for="nombre" class="col-md-4 col-sm-3 col-form-label label-gray-left">Nombre:</label>
-                                 <div class="col-md-7 col-sm-8">
-                                    <input type=text class="form-control" id="nombre" placeholder="Ingrese su nombre" name="nombre"
+                             <div class="form-group row">
+                                <label for="nombre" class="col-md-4 col-sm-3 col-form-label label-gray-left">Nombre:</label>
+                                <div class="col-md-7 col-sm-8">
+                                   <input type=text class="form-control" id="nombre" placeholder="Ingrese su nombre" name="nombre"          pattern="^[a-zA-Z*\s]{0,20}"
                                        required="required">
-                                 </div>
-                              </div>
+                                       <div class="invalid-feedback">Ingresar un nombre válido</div>
+                                     <!-- pattern="[A-Z]" -->
+                                </div>
+                             </div>
 
-                              <div class="form-group row">
-                                 <label for="ApellidoPaterno" class="col-md-4 col-sm-3 col-form-label label-gray-left">Apellido Paterno:</label>
-                                 <div class="col-md-7 col-sm-8">
-                                    <input type="text" class="form-control" id="apellidoPaterno" placeholder="Ingrese su Apellido Paterno"
-                                            name="apellidoPaterno"
-                                       required="required">
-                                 </div>
-                              </div>
+                             <div class="form-group row">
+                                <label for="ApellidoPaterno" class="col-md-4 col-sm-3 col-form-label label-gray-left">Apellido Paterno:</label>
+                                <div class="col-md-7 col-sm-8">
+                                   <input type="text" class="form-control" id="apellidoPaterno" placeholder="Ingrese su Apellido Paterno"
+                                           name="apellidoPaterno" pattern="^[a-zA-Z*\s]{0,20}"
+                                      required="required">
+                                      <div class="invalid-feedback">Ingresar un apellido válido</div>
 
-                              <div class="form-group row">
-                                 <label for="ApellidoMaterno" class="col-md-4 col-sm-3 col-form-label label-gray-left">Apellido Materno:</label>
-                                 <div class="col-md-7 col-sm-8">
-                                    <input type="text" class="form-control" id="apellidoMaterno" placeholder="Ingrese su Apellido Materno"
-                                       required="required">
-                                 </div>
-                              </div>
+                                </div>
+                             </div>
 
-
-                              <div class="form-group row">
-                                 <label for="Sexo" class="col-md-4 col-sm-3 col-form-label label-gray-left">Sexo:</label>
-                                 <div class="col-md-7 col-sm-8">
-                                    <div class="form-check form-check-inline">
-                                       <input class="form-check-input" type="radio" name="sexo" id="masculino"
-                                          value="m" checked="checked">
-                                       <label class="form-check-label" for="masculino">Masculino</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                       <input class="form-check-input" type="radio" name="sexo" id="masculino"
-                                          value="m" checked="checked">
-                                       <label class="form-check-label" for="masculino">Femenino</label>
-                                    </div>
-                                 </div>
-                              </div>
+                             <div class="form-group row">
+                                <label for="ApellidoMaterno" class="col-md-4 col-sm-3 col-form-label label-gray-left">Apellido Materno:</label>
+                                <div class="col-md-7 col-sm-8">
+                                   <input type="text" class="form-control" id="apellidoMaterno" placeholder="Ingrese su Apellido Materno"
+                                      pattern="^[a-zA-Z*\s]{0,20}"required="required">
+                                      <div class="invalid-feedback">Ingresar un apellido válido</div>
+                                </div>
+                             </div>
 
 
-
-                              <div class="form-group row">
-                                 <label for="tipoDeDocumento" class="col-md-4 col-sm-3 col-form-label label-gray-left">Tipo de Documento:</label>
-                                 <div class="col-md-7 col-sm-8">
-                                    <select id="tipoDeDocumento" class="custom-select">
-                                       <option selected>Seleccione...</option>
-                                       <option value="1">DNI</option>
-                                       <option value="2">RUC</option>
-                                    </select>
-                                 </div>
-                              </div>
-
-                              <div class="form-group row">
-                                 <label for="numeroDeDocumento" class="col-md-4 col-sm-3 col-form-label label-gray-left">Número de Documento:</label>
-                                 <div class="col-md-7 col-sm-8">
-                                    <input type="text" class="form-control" id="numeroDeDocumento" placeholder="Ingrese Número de Documento Identidad"
-                                       required="required">
-                                 </div>
-                              </div>
-
-                              <div class="form-group row">
-                                 <label for="TipodeUsuario" class="col-md-4 col-sm-3 col-form-label label-gray-left">Tipo de Usuario:</label>
-                                 <div class="col-md-7 col-sm-8">
-                                    <select id="TipodeUsuario" class="custom-select">
-                                       <option selected>Seleccione...</option>
-                                       <option value="1">Dueño</option>
-                                       <option value="2">Cliente</option>
-                                    </select>
-                                 </div>
-                              </div>
-
-                              <div class="form-group row">
-                                 <label for="CorreoElectronico" class="col-md-4 col-sm-3 col-form-label label-gray-left">Correo Electr&oacute;nico:</label>
-                                 <div class="col-md-7 col-sm-8">
-                                    <input type="email" class="form-control" id="CorreoElectronico"
-                                       placeholder="Ingrese Correo Electr&oacute;nico"
-                                       required="required">
-                                 </div>
-                              </div>
-
-                              <div class="form-group row">
-                                 <label for="ConfirmarCorreo" class="col-md-4 col-sm-3 col-form-label label-gray-left">Confirmar Correo:</label>
-                                 <div class="col-md-7 col-sm-8">
-                                    <input type="email" class="form-control" id="ConfirmarCorreo"
-                                       placeholder="Confirmar Correo Electr&oacute;nico"
-                                       required="required">
-                                 </div>
-                              </div>
-
-                              <div class="form-group row">
-                                 <label for="contraseña" class="col-md-4 col-sm-3 col-form-label label-gray-left">Contraseña</label>
-                                 <div class="col-md-7 col-sm-8">
-                                    <input type="password" class="form-control" id="contraseña"
-                                       placeholder="Ingrese su Contraseña"
-                                       required="required">
-                                 </div>
-                              </div>
-
-                              <div class="form-group row">
-                                 <label for="confirmarContraseña" class="col-md-4 col-sm-3 col-form-label label-gray-left">Confirmar Contraseña</label>
-                                 <div class="col-md-7 col-sm-8">
-                                    <input type="password" class="form-control" id="confirmarContraseña"
-                                       placeholder="Ingrese su contraseña nuevamente"
-                                       required="required">
-                                 </div>
-                              </div>
-
-                              <div class="form-group row">
-                                 <label for="fechaNacimiento" class="col-md-4 col-sm-3 col-form-label label-gray-left">Fecha:</label>
-                                 <div class="col-md-7 col-sm-8">
-                                     <input type="date" class="form-control" id="fechaNacimiento" name="birthday" >
-                                 </div>
-                              </div>
-
-                              <div class="form-group row">
-                                 <label for="celular" class="col-md-4 col-sm-3 col-form-label label-gray-left">Celular:</label>
-                                 <div class="col-md-7 col-sm-8">
-                                    <input type="tel" class="form-control" id="celular"
-                                       placeholder="Ingrese número de celular"
-                                       required="required">
-                                 </div>
-                              </div>
-                      </div>
+                             <div class="form-group row">
+                                <label for="Sexo" class="col-md-4 col-sm-3 col-form-label label-gray-left">Sexo:</label>
+                                <div class="col-md-7 col-sm-8">
+                                   <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="sexo" id="masculino"
+                                         value="m" checked="checked">
+                                      <label class="form-check-label" for="masculino">Masculino</label>
+                                   </div>
+                                   <div class="form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="sexo" id="masculino"
+                                         value="m" checked="checked">
+                                      <label class="form-check-label" for="masculino">Femenino</label>
+                                   </div>
+                                </div>
+                             </div>
 
 
 
+                             <div class="form-group row">
+                                <label for="tipoDeDocumento" class="col-md-4 col-sm-3 col-form-label label-gray-left">Tipo de Documento:</label>
+                                <div class="col-md-7 col-sm-8">
+                                   <select id="tipoDeDocumento" class="custom-select" required="required">
+                                      <option selected>Seleccione</option>
+                                      <option value="1">DNI</option >
+                                      <option value="2">RUC</option >
+                                   </select>
+                                </div>
+                             </div>
+
+                             <div class="form-group row">
+                                <label for="dni" class="col-md-4 col-sm-3 col-form-label label-gray-left">Número de Documento:</label>
+                                <div class="col-md-7 col-sm-8">
+                                   <input type="text" class="form-control" id="dni" placeholder="Ingrese Número de Documento Identidad" pattern="[0-9]+" maxlength="12" minlength="8" name="dni"
+                                      required="required">
+                                      <div class="invalid-feedback">Ingresar un dni válido</div>
+                                </div>
+                             </div>
+
+                             <div class="form-group row">
+                                <label for="TipodeUsuario" class="col-md-4 col-sm-3 col-form-label label-gray-left">Tipo de Usuario:</label>
+                                <div class="col-md-7 col-sm-8">
+                                   <select id="TipodeUsuario" class="custom-select">
+                                      <option selected>Seleccione...</option>
+                                      <option value="1">Dueño</option>
+                                      <option value="2">Cliente</option>
+                                   </select>
+                                </div>
+                             </div>
+
+                            <div class="form-group row">
+                                <label for="CorreoElectronico" class="col-md-4 col-sm-3 col-form-label label-gray-left">Correo Electr&oacute;nico:</label>
+                                <div class="col-md-7 col-sm-8">
+                                   <input type="email" class="form-control" id="CorreoElectronico" name="CorreoElectronico"
+                                      placeholder="Ingrese Correo Electr&oacute;nico"
+                                      required="required">
+                                      <div class="invalid-feedback">Ingresar un correo válido</div>
+                                </div>
+                             </div>
+
+                             <div class="form-group row">
+                                <label for="ConfirmarCorreo" class="col-md-4 col-sm-3 col-form-label label-gray-left">Confirmar Correo:</label>
+                                <div class="col-md-7 col-sm-8">
+                                   <input type="email" class="form-control" id="ConfirmarCorreo" name="ConfirmarCorreo"
+                                      placeholder="Confirmar Correo Electr&oacute;nico"
+                                      required="required">
+                                      <div id="verifyEmailError"></div>
+                                      <div class="invalid-feedback">Ingresar un correo válido</div>
+                                </div>
+                             </div>
+
+
+
+
+
+
+
+
+                             <div class="form-group row">
+                                <label for="contraseña" class="col-md-4 col-sm-3 col-form-label label-gray-left">Contraseña</label>
+                                <div class="col-md-7 col-sm-8">
+                                   <input type="password" class="form-control" id="contraseña"
+                                      placeholder="Ingrese su Contraseña"
+                                      required="required">
+                                      <div class="invalid-feedback">Ingresar contraseña válida</div>
+                                </div>
+                             </div>
+
+                             <div class="form-group row">
+                                <label for="confirmarContraseña" class="col-md-4 col-sm-3 col-form-label label-gray-left">Confirmar Contraseña</label>
+                                <div class="col-md-7 col-sm-8">
+                                   <input type="password" class="form-control" id="confirmarContraseña"
+                                      placeholder="Ingrese su contraseña nuevamente"
+                                      required="required">
+                                      <div class="invalid-feedback">Ingresar contraseña válida</div>
+                                </div>
+                             </div>
+
+                             <div class="form-group row">
+                                <label for="fechaNacimiento" class="col-md-4 col-sm-3 col-form-label label-gray-left">Fecha:</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input type="date" class="form-control" id="fechaNacimiento" name="birthday" >
+                                </div>
+                             </div>
+
+                             <div class="form-group row">
+                                <label for="celular" class="col-md-4 col-sm-3 col-form-label label-gray-left">Celular:</label>
+                                <div class="col-md-7 col-sm-8">
+                                   <input type="tel" class="form-control" id="celular" name = 'telefono'
+                                      placeholder="Ingrese número de celular" pattern="[0-9]+" maxlength="14" mnlength="8"
+                                      required="required">
+                                      <div class="invalid-feedback">Ingresar un teléfono válido</div>
+                                </div>
+                             </div>
+                     </div>
 
                       <div class="col-md-5 col-sm-12">
                           <div class="form-group row">
@@ -275,7 +273,8 @@
 
                       <div class="form-group row">
                            <div class="col-md-1"></div>
-                          <img src="/images/avatar.png" class="col-md-10 img-fluid img-thumbnail"  alt="Responsive image">
+
+                              <img class="ol-md-10 img-fluid img-thumbnail" src="<%= image_path('avatar.png') %>"  alt="Responsive image" >
                           <div class="col-md-1"></div>
                       </div>
 
@@ -287,6 +286,7 @@
                               </div>
                            </button>
 
+                         <%end%>
 
 
 
